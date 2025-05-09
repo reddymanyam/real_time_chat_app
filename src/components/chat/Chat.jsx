@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import Avatarr from "../reusablecomponents/Avatarr";
 
-const Chat = ({ isChatOpen }) => {
+const Chat = ({ isChatOpen, setIsChatOpen, setIsChatProfileOpen, setIsChatListOpen }) => {
   const [message, setMessage] = useState("");
 
   const chatData = [
@@ -98,8 +98,9 @@ const Chat = ({ isChatOpen }) => {
   };
 
   const handleChatListOpen = () => {
-    setIsOpen(true);
-    console.log("button is clicked");
+    setIsChatListOpen(true);
+    setIsChatOpen(false);
+    setIsChatProfileOpen(false);
   };
 
   return (

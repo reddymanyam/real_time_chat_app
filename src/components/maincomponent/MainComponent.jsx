@@ -25,11 +25,17 @@ const MainComponent = () => {
             <div className='flex-1 bg-gray-50 overflow-y-auto'>
                 <Chat
                     isChatOpen={isChatOpen}
+                    setIsChatOpen={setIsChatOpen}
+                    setIsChatProfileOpen={setIsChatProfileOpen}
+                    setIsChatListOpen={setIsChatListOpen}
                 />
             </div>
             <div className='lg:block w-full lg:w-[280px] bg-gray-100 border-l overflow-y-auto'>
                 <ChatProfile
                     isChatProfileOpen={isChatProfileOpen}
+                    setIsChatOpen={setIsChatOpen}
+                    setIsChatProfileOpen={setIsChatProfileOpen}
+                    setIsChatListOpen={setIsChatListOpen}
                 />
             </div>
         </div>
