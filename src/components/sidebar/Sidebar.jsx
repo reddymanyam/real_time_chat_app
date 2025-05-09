@@ -6,7 +6,7 @@ const iconStyle = "p-4 rounded-lg text-gray-600 hover:text-indigo-600 hover:bg-g
 const Sidebar = () => {
 
     return (
-        <div className="flex h-full w-full flex-row overflow-x-auto overflow-y-hidden lg:flex-col lg:overflow-hidden items-center justify-between px-4 lg:px-2 py-2 z-40">
+        <div className="flex h-full w-full flex-row overflow-x-auto overflow-y-hidden items-center justify-between lg:flex-col lg:overflow-hidden  px-4 lg:px-2 py-2 z-40">
             <div className="flex flex-row lg:flex-col gap-2">
                 <div className={iconStyle}>
                     <CircleUser strokeWidth={1.5} />
