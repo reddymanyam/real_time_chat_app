@@ -1,10 +1,20 @@
-import { CircleUser, Clock, EllipsisVertical, Mail, MapPin, Phone } from 'lucide-react';
+import { ChevronLeft, CircleUser, Clock, EllipsisVertical, Mail, MapPin, Phone } from 'lucide-react';
 import Avatarr from '../reusablecomponents/Avatarr';
 
-const ChatProfile = ({ isChatProfileOpen }) => {
+const ChatProfile = ({ isChatProfileOpen, setIsChatListOpen, setIsChatOpen, setIsProfileOpen }) => {
+
+    const handleChatListOpen = () => {
+        setIsChatListOpen(true);
+        setIsChatOpen(false);
+        setIsProfileOpen(false);
+    }
+
     return (
-        <div className={`${isChatProfileOpen ? "flex" : "hidden"} lg:flex flex-col p-4 h-full`}>
-            <div className='flex justify-between'>
+        <div className={`${isChatProfileOpen ? 'block w-full' : 'hidden'} lg:flex flex-col p-4 h-full`}>
+            <div className='flex justify-between items-center'>
+                <div className='lg:hidden'>
+                    <ChevronLeft size={20} strokeWidth={1} onClick={handleChatListOpen} className='cursor-pointer' />
+                </div>
                 <h3 className='text-xl'>My Profile</h3>
                 <EllipsisVertical strokeWidth={1} />
             </div>
