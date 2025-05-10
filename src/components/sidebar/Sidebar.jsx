@@ -3,10 +3,12 @@ import Avatarr from '../reusablecomponents/Avatarr';
 
 const iconStyle = "p-4 rounded-lg text-gray-600 hover:text-indigo-600 hover:bg-gray-200 cursor-pointer transition-colors";
 
-const Sidebar = () => {
+const Sidebar = (
+    // { isChatProfileOpen }
+) => {
 
     return (
-        <div className="flex h-full w-full flex-row overflow-x-auto overflow-y-hidden items-center justify-between lg:flex-col lg:overflow-hidden  px-4 lg:px-2 py-2 z-40">
+        <div className="flex h-full w-full flex-row overflow-x-auto overflow-y-hidden lg:flex-col lg:justify-between lg:overflow-hidden  px-4 lg:px-2 py-2 z-40">
             <div className="flex flex-row lg:flex-col gap-2">
                 <div className={iconStyle}>
                     <CircleUser strokeWidth={1.5} />

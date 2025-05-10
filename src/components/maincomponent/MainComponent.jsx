@@ -12,7 +12,7 @@ const MainComponent = () => {
     return (
         <div className='flex flex-col-reverse lg:flex-row h-screen w-full overflow-hidden'>
             <div className='w-full h-[70px] lg:w-[80px] lg:h-full bg-gray-100 border-t lg:border-t-0 lg:border-r'>
-                <Sidebar />
+                <Sidebar isChatProfileOpen={isChatProfileOpen} />
             </div>
             <div className='lg:block w-full lg:w-[300px] bg-gray-100 border-r'>
                 <ChatList

@@ -72,8 +72,8 @@ const ChatProfile = ({ isChatProfileOpen, setIsChatListOpen, setIsChatOpen, setI
                         <MapPin size={20} className="text-purple-500" />
                     </div>
                     <div className='flex flex-col '>
-                        <p className=' text-gray-600 font-medium'>Phone No:</p>
-                        <p className='text-sm text-blue-gray-800'>+91 9849576748</p>
+                        <p className=' text-gray-600 font-medium'>Location:</p>
+                        <p className='text-sm text-blue-gray-800'>Bangalore, India</p>
                     </div>
                 </div>
 
