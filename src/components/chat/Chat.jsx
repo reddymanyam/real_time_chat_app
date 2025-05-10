@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -14,6 +14,7 @@ import {
   Send,
 } from "lucide-react";
 import Avatarr from "../reusablecomponents/Avatarr";
+import Buttonn from "../reusablecomponents/Buttonn";
 
 const Chat = ({ isChatOpen, setIsChatOpen, setIsChatProfileOpen, setIsChatListOpen }) => {
   const [message, setMessage] = useState("");
@@ -195,13 +196,19 @@ const Chat = ({ isChatOpen, setIsChatOpen, setIsChatProfileOpen, setIsChatListOp
             onKeyPress={handleKeyPress}
             className="flex-1"
           />
-          <Button
+          {/* <Button
             size="icon"
             className="bg-[#7269ef] hover:bg-[#5e56d8] rounded-full"
             onClick={handleSendMessage}
           >
             <Send size={18} className="text-white" />
-          </Button>
+          </Button> */}
+          <Buttonn
+            size="icon"
+            className="bg-[#7269ef] hover:bg-[#5e56d8] rounded-full"
+            onClick={handleSendMessage}>
+            <Send size={18} className="text-white" />
+          </Buttonn>
         </div>
       </div>
     </div>
