@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -17,6 +17,8 @@ import Avatarr from "../reusablecomponents/Avatarr";
 
 const Chat = ({ isChatOpen, setIsChatOpen, setIsChatProfileOpen, setIsChatListOpen }) => {
   const [message, setMessage] = useState("");
+  const messagesEndRef = useRef(null);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const chatData = [
     {
@@ -86,6 +88,16 @@ const Chat = ({ isChatOpen, setIsChatOpen, setIsChatProfileOpen, setIsChatListOp
     },
   ];
 
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: hasLoaded ? "smooth" : "auto" });
+    }
+  }, [chatData, hasLoaded]);
+
+  useEffect(() => {
+    setHasLoaded(true);
+  }, []);
+
   const handleSendMessage = () => {
     if (message.trim() !== "") {
       console.log("Message sent:", message);
@@ -117,7 +129,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, setIsChatProfileOpen, setIsChatListOp
           <span className="hidden lg:block font-medium text-sm">John Doe</span>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <Search size={18} />
           <Phone size={18} />
           <Video size={18} />
@@ -142,24 +154,29 @@ const Chat = ({ isChatOpen, setIsChatOpen, setIsChatProfileOpen, setIsChatListOp
             {!chat.isMe && (
               <Avatarr className='mr-2 mt-1' src={chat.avatar} />
             )}
-            <div className="max-w-xs md:max-w-md">
-              <div
-                className={`relative p-3 text-sm ${chat.isMe
-                  ? "bg-[#7269ef] text-white rounded-t-lg rounded-bl-lg"
-                  : "bg-white text-gray-800 rounded-t-lg rounded-br-lg border shadow-sm"
-                  }`}
-              >
-                {chat.message}
-                <span
-                  className={`absolute bottom-0 right-2 text-[10px] ${chat.isMe ? "text-indigo-200" : "text-gray-500"
-                    }`}
-                >
-                  {chat.time}
-                </span>
+            <div className="flex flex-col max-w-xs md:max-w-md">
+              <div className={`relative ${chat.isMe ? 'ml-auto' : ''}`}>
+                <div className={`p-3 relative ${chat.isMe
+                  ? ' bg-[#7269ef] text-white rounded-t-lg rounded-bl-lg'
+                  : 'bg-white rounded-t-lg rounded-br-lg shadow-md border-l-4 border-l-gray-200'
+                  }`}>
+                  <div className={`absolute bottom-0 ${chat.isMe
+                    ? 'right-0 border-t-8 border-t-[#7269ef] border-l-8 border-l-transparent -mb-2'
+                    : 'left-0 border-t-8 border-t-white border-r-8 border-r-transparent -ml-2 -mb-2'}`}>
+                  </div>
+
+                  <span className="text-sm pr-10">
+                    {chat.message}
+                  </span>
+                  <span className={`text-xs font-medium absolute bottom-1 right-2 ${chat.isMe ? 'text-indigo-200' : 'text-gray-500'}`}>
+                    {chat.time}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         ))}
+        <div ref={messagesEndRef}></div>
       </div>
 
       {/* Input */}
